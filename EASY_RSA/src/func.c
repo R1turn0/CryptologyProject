@@ -29,7 +29,7 @@ __declspec(dllexport) int prime_rand()
     }
 }
 
-__declspec(dllexport) int LCM(int p, int q)// 最小公倍数
+__declspec(dllexport) int LCM(int p, int q)// 脳卯脨隆鹿芦卤露脢媒
 {
     int L = 0;
     int i = 0;
@@ -46,7 +46,7 @@ __declspec(dllexport) int LCM(int p, int q)// 最小公倍数
     return i;
 }
 
-__declspec(dllexport) int GCD(int L)// 最大公约数
+__declspec(dllexport) int GCD(int L)// 脳卯麓贸鹿芦脭录脢媒
 {
     int tmp = 0;
     int E = rand();
@@ -117,7 +117,7 @@ __declspec(dllexport) int sayHi(void)
     }
     else
     {
-        printf("Why is me not say hi?\n");
+        printf("Why didn't I say hi?\n");
     }
     return 0;
 }
