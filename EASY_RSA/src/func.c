@@ -4,32 +4,43 @@ __declspec(dllexport) int prime_rand()
 {
     int flag = 1;
     int num = 0;
-    int i = 0;
+    int i = 0, j = 0;
+    long long a[3] = { 31, 29, 12 };
 
     //srand(time(NULL));
     num = rand() % 100;
     if (num < 2)
-    {
         return prime_rand();
-    }
-    for (i = 2; i < num; i++)
-    {
-        if (num % i == 0)
-        {
-            break;
-        }
-    }
-    if (i >= num)
-    {
-        return num;
-    }
-    else
-    {
+    if (num % 2 == 0 || num % 3 == 0 || num % 5 == 0)
         return prime_rand();
-    }
+    for (i = 0; i < num; i++)
+        for (j = 0; j < sizeof(a) / sizeof(a[0]); i++)
+            a[j] *= a[j];
+    for (j = 0; j < sizeof(a) / sizeof(a[0]); i++)
+        a[j] -= a[j];
+    for (j = 0; j < sizeof(a) / sizeof(a[0]); i++)
+        if (a[j] % num != 0)
+            return prime_rand();
+    return num;
+
+    //for (i = 2; i < num; i++)
+    //{
+    //    if (num % i == 0)
+    //    {
+    //        break;
+    //    }
+    //}
+    //if (i >= num)
+    //{
+    //    return num;
+    //}
+    //else
+    //{
+    //    return prime_rand();
+    //}
 }
 
-__declspec(dllexport) int LCM(int p, int q)// ×îÐ¡¹«±¶Êý
+__declspec(dllexport) int LCM(int p, int q)// ��С������
 {
     int L = 0;
     int i = 0;
@@ -46,7 +57,7 @@ __declspec(dllexport) int LCM(int p, int q)// ×îÐ¡¹«±¶Êý
     return i;
 }
 
-__declspec(dllexport) int GCD(int L)// ×î´ó¹«Ô¼Êý
+__declspec(dllexport) int GCD(int L)// ���Լ��
 {
     int tmp = 0;
     int E = rand();
