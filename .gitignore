@@ -3,6 +3,8 @@
 
 ### I add ###
 build/
+.idea/
+cmake-build-debug/
 
 
 ### C ###
