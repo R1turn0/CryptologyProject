@@ -19,20 +19,20 @@ set(ROOTDIR ${CMAKE_SOURCE_DIR})
 link_directories(${CMAKE_SOURCE_DIR}/lib/${PLATFORM})
 #link_directories(${CMAKE_SOURCE_DIR}/lib)
 
-add_executable(TDES_OpenSSL_Project main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
-target_include_directories(TDES_OpenSSL_Project PRIVATE ${PROJECT_SOURCE_DIR}/inc)
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/inc)
 
-target_link_libraries(TDES_OpenSSL_Project
+target_link_libraries(${PROJECT_NAME}
     PRIVATE
         libcrypto
 		libssl
 )
 
 # Custom Target Copy
-# $<TARGET_RUNTIME_DLLS:TDES_OpenSSL_Project>
-add_custom_command(TARGET TDES_OpenSSL_Project POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/lib/${PLATFORM}/libcrypto-3-x64.dll $<TARGET_FILE_DIR:TDES_OpenSSL_Project>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/lib/${PLATFORM}/libssl-3-x64.dll $<TARGET_FILE_DIR:TDES_OpenSSL_Project>
+# $<TARGET_RUNTIME_DLLS:${PROJECT_NAME}>
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/lib/${PLATFORM}/libcrypto-3-x64.dll $<TARGET_FILE_DIR:${PROJECT_NAME}>
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PROJECT_SOURCE_DIR}/lib/${PLATFORM}/libssl-3-x64.dll $<TARGET_FILE_DIR:${PROJECT_NAME}>
         COMMAND_EXPAND_LISTS
 )
